@@ -75,6 +75,7 @@ type (
 		CloseTimestamp     int64
 		CloseStatus        types.WorkflowExecutionCloseStatus
 		HistoryLength      int64
+		HistorySize        int64
 		Memo               *types.Memo
 		SearchAttributes   map[string][]byte
 		VisibilityURI      string

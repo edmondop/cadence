@@ -65,6 +65,7 @@ func (s *visibilityArchiverSuite) SetupTest() {
 			CloseTimestamp:   1580896575946478000,
 			CloseStatus:      types.WorkflowExecutionCloseStatusCompleted,
 			HistoryLength:    36,
+			HistorySize:      targetHistoryBlobSize,
 		},
 	}
 }
@@ -188,6 +189,7 @@ func (s *visibilityArchiverSuite) TestVisibilityArchive() {
 		CloseTimestamp:     time.Now().UnixNano(),
 		CloseStatus:        types.WorkflowExecutionCloseStatusFailed,
 		HistoryLength:      int64(101),
+		HistorySize:        targetHistoryBlobSize,
 	}
 
 	err = visibilityArchiver.Archive(ctx, URI, request)

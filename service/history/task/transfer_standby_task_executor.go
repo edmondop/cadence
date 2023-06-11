@@ -241,6 +241,7 @@ func (t *transferStandbyTaskExecutor) processCloseExecution(
 		workflowCloseTimestamp := wfCloseTime
 		workflowCloseStatus := persistence.ToInternalWorkflowExecutionCloseStatus(executionInfo.CloseStatus)
 		workflowHistoryLength := mutableState.GetNextEventID() - 1
+		workflowHistorySize := int64(0)
 		startEvent, err := mutableState.GetStartEvent(ctx)
 		if err != nil {
 			return nil, err
@@ -280,6 +281,7 @@ func (t *transferStandbyTaskExecutor) processCloseExecution(
 			workflowCloseTimestamp,
 			*workflowCloseStatus,
 			workflowHistoryLength,
+			workflowHistorySize,
 			transferTask.GetTaskID(),
 			visibilityMemo,
 			executionInfo.TaskList,

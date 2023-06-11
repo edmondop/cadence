@@ -33,6 +33,7 @@ const (
 	CloseTime       = "CloseTime"
 	CloseStatus     = "CloseStatus"
 	HistoryLength   = "HistoryLength"
+	HistorySize     = "HistorySize"
 	Encoding        = "Encoding"
 	KafkaKey        = "KafkaKey"
 	BinaryChecksums = "BinaryChecksums"
@@ -98,6 +99,7 @@ var systemIndexedKeys = map[string]interface{}{
 	CloseTime:     types.IndexedValueTypeInt,
 	CloseStatus:   types.IndexedValueTypeInt,
 	HistoryLength: types.IndexedValueTypeInt,
+	HistorySize:   types.IndexedValueTypeInt,
 	TaskList:      types.IndexedValueTypeKeyword,
 	IsCron:        types.IndexedValueTypeBool,
 	NumClusters:   types.IndexedValueTypeInt,

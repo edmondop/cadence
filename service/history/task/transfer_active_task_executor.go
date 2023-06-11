@@ -372,6 +372,7 @@ func (t *transferActiveTaskExecutor) processCloseExecutionTaskHelper(
 	workflowCloseTimestamp := wfCloseTime
 	workflowCloseStatus := persistence.ToInternalWorkflowExecutionCloseStatus(executionInfo.CloseStatus)
 	workflowHistoryLength := mutableState.GetNextEventID() - 1
+	workflowHistorySize := int64(0) // TODO
 	isCron := len(executionInfo.CronSchedule) > 0
 	numClusters := (int16)(len(domainEntry.GetReplicationConfig().Clusters))
 	updateTimestamp := t.shard.GetTimeSource().Now()
@@ -469,6 +470,7 @@ func (t *transferActiveTaskExecutor) processCloseExecutionTaskHelper(
 			workflowCloseTimestamp,
 			*workflowCloseStatus,
 			workflowHistoryLength,
+			workflowHistorySize,
 			task.GetTaskID(),
 			visibilityMemo,
 			executionInfo.TaskList,

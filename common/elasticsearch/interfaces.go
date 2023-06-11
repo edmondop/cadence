@@ -163,6 +163,7 @@ type (
 		CloseTime     int64
 		CloseStatus   workflow.WorkflowExecutionCloseStatus
 		HistoryLength int64
+		HistorySize   int64
 		Memo          []byte
 		Encoding      string
 		TaskList      string

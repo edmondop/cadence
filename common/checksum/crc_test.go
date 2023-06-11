@@ -45,6 +45,7 @@ func TestCRC32OverThrift(t *testing.T) {
 		},
 		StartTime:     common.Int64Ptr(time.Now().UnixNano()),
 		HistoryLength: common.Int64Ptr(550),
+		// TODO modifying the IDL HistorySize
 	}
 
 	parallism := 10

@@ -158,6 +158,7 @@ func (s *visibilityArchiverSuite) TestArchive_Fail_InvalidURI() {
 		CloseTimestamp:     time.Now().UnixNano(),
 		CloseStatus:        types.WorkflowExecutionCloseStatusFailed,
 		HistoryLength:      int64(101),
+		HistorySize:        targetHistoryBlobSize,
 	}
 	err = visibilityArchiver.Archive(context.Background(), URI, request)
 	s.Error(err)
@@ -197,6 +198,7 @@ func (s *visibilityArchiverSuite) TestArchive_Success() {
 		CloseTimestamp:     closeTimestamp.UnixNano(),
 		CloseStatus:        types.WorkflowExecutionCloseStatusFailed,
 		HistoryLength:      int64(101),
+		HistorySize:        targetHistoryBlobSize,
 		Memo: &types.Memo{
 			Fields: map[string][]byte{
 				"testFields": {1, 2, 3},
@@ -428,6 +430,7 @@ func (s *visibilityArchiverSuite) TestArchiveAndQueryPrecisions() {
 			CloseTimestamp:   (testData.day+30)*int64(time.Hour)*24 + testData.hour*int64(time.Hour) + testData.minute*int64(time.Minute) + testData.second*int64(time.Second),
 			CloseStatus:      types.WorkflowExecutionCloseStatusFailed,
 			HistoryLength:    101,
+			HistorySize:      targetHistoryBlobSize,
 		}
 		err := visibilityArchiver.Archive(context.Background(), URI, &record)
 		s.NoError(err)
@@ -565,6 +568,7 @@ func (s *visibilityArchiverSuite) setupVisibilityDirectory() {
 			CloseTimestamp:   int64(1 * time.Hour),
 			CloseStatus:      types.WorkflowExecutionCloseStatusFailed,
 			HistoryLength:    101,
+			HistorySize:      targetHistoryBlobSize,
 		},
 		{
 			DomainID:         testDomainID,
@@ -576,6 +580,7 @@ func (s *visibilityArchiverSuite) setupVisibilityDirectory() {
 			CloseTimestamp:   int64(1*time.Hour + 30*time.Minute),
 			CloseStatus:      types.WorkflowExecutionCloseStatusFailed,
 			HistoryLength:    101,
+			HistorySize:      targetHistoryBlobSize,
 		},
 		{
 			DomainID:         testDomainID,
@@ -587,6 +592,7 @@ func (s *visibilityArchiverSuite) setupVisibilityDirectory() {
 			CloseTimestamp:   int64(3 * time.Hour),
 			CloseStatus:      types.WorkflowExecutionCloseStatusFailed,
 			HistoryLength:    101,
+			HistorySize:      targetHistoryBlobSize,
 		},
 	}
 	visibilityArchiver := s.newTestVisibilityArchiver()

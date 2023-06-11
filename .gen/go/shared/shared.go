@@ -99184,6 +99184,7 @@ type WorkflowExecutionInfo struct {
 	CloseTime        *int64                        `json:"closeTime,omitempty"`
 	CloseStatus      *WorkflowExecutionCloseStatus `json:"closeStatus,omitempty"`
 	HistoryLength    *int64                        `json:"historyLength,omitempty"`
+	HistorySize      *int64                        `json:"historyLength,omitempty"`
 	ParentDomainId   *string                       `json:"parentDomainId,omitempty"`
 	ParentExecution  *WorkflowExecution            `json:"parentExecution,omitempty"`
 	ExecutionTime    *int64                        `json:"executionTime,omitempty"`

@@ -68,6 +68,7 @@ type (
 		CloseTimestamp     int64
 		Status             types.WorkflowExecutionCloseStatus
 		HistoryLength      int64
+		HistorySize        int64
 		RetentionSeconds   int64
 		TaskID             int64 // not persisted, used as condition update version for ES
 		Memo               *types.Memo
